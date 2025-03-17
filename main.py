@@ -37,12 +37,21 @@ paul_friends = ["Mary", "Tim", "Mike", "Henry"]
 tina_friends = ["Tim", "Susan", "Mary", "Josh"]
 ```  
 Объедините оба списка в один, исключив дублирующиеся имена.  
-
+paul_friends = ["Mary", "Tim", "Mike", "Henry"]  
+tina_friends = ["Tim", "Susan", "Mary", "Josh"]
+all_friends = set(paul_friends + tina_friends)
+print (all_friends)
 ---
 
 ### Задача 4: Общие друзья  
 Используя те же списки друзей Пола и Тины, напишите программу, которая с помощью цикла находит их общих друзей.  
-
+paul_friends = ["Mary", "Tim", "Mike", "Henry"]  
+tina_friends = ["Tim", "Susan", "Mary", "Josh"]
+all_friends = []
+for friend in paul_friends:
+    if friend in tina_friends:
+        all_friends.append(friend)
+print (all_friends)
 ---
 
 ### Задача 5: Игроки в баскетбол  
@@ -53,7 +62,11 @@ volleyball_players = {"Jack", "Hugh", "Peter", "Sam"}
 basketball_players = {"Eve", "Richard", "Jessica", "Sam", "Michael"}
 ```  
 Напишите программу, которая определяет игроков, зарегистрированных только в баскетболе (не в футболе и не в волейболе).  
-
+football_players = {"Eve", "Tom", "Richard", "Peter"}  
+volleyball_players = {"Jack", "Hugh", "Peter", "Sam"}  
+basketball_players = {"Eve", "Richard", "Jessica", "Sam", "Michael"}
+only_basket = basketball_players - volleyball_players - football_players
+print(only_basket)
 ---
 
 ### Задача 6: Подсчёт голосов  
@@ -63,6 +76,16 @@ poll_results = ["Python", "Java", "Javascript", "Python", "Javascript", "Python"
 ```  
 Используя словарь, подсчитайте количество голосов за каждый язык.  
 
+poll_results = ["Python", "Java", "Javascript", "Python", "Javascript", "Python", "C", "Python", "Python", "C", "Javascript"]
+poll_results = ["Python", "Java", "Javascript", "Python", "Javascript", "Python", "C", "Python", "Python", "C", "Javascript"]
+voice_count = {}
+for results in poll_results:
+    if results in voice_count:
+        voice_count[results] += 1 
+    else:
+        voice_count[results] = 1 
+    for option, count in voice_count.items():
+        print(f"{option}: {count} голосов")
 ---
 
 ### Задача 7: Подсчёт очков  
@@ -72,6 +95,14 @@ scores = [('Mike', 10), ('Mike', 8), ('Mike', 6), ('John', 7), ('John', 8), ('Jo
 ```  
 Создайте словарь, где ключами будут имена игроков, а значениями — их суммарные очки.  
 
+scores = [('Mike', 10), ('Mike', 8), ('Mike', 6), ('John', 7), ('John', 8), ('John', 5), ('Tom', 8), ('Tom', 9), ('Tom', 8)]
+all_points = {}
+for name, score in scores:
+    if name in all_points:
+        all_points[name] += score
+    else:
+        all_points[name] = score
+print(all_points)
 ---
 
 ### Задача 8: Статистика списка  
@@ -80,6 +111,24 @@ scores = [('Mike', 10), ('Mike', 8), ('Mike', 6), ('John', 7), ('John', 8), ('Jo
 numbers = [10, 3, 5, 9, 18, 3, 0, 7]
 ```  
 Напишите функцию, которая возвращает максимальное значение, сумму и среднее арифметическое чисел в списке.  
+def statistic(numbers):
+    if not numbers: 
+        return max_value, total_sum, average
+
+    numbers = [10, 3, 5, 9, 18, 3, 0, 7]
+
+    max_value = max(numbers)
+    total_sum = sum(numbers)
+    average = total_sum / len(numbers)
+
+    return max_value, total_sum, average 
+
+numbers = [10, 3, 5, 9, 18, 3, 0, 7]
+max_value, total_sum, average = statistic(numbers)
+
+print(f"Максимальное значение: {max_value}")
+print(f"Сумма: {total_sum}")
+print(f"Среднее арифметическое чисел: {average}")
 
 ---
 
